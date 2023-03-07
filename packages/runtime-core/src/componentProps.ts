@@ -307,20 +307,6 @@ export function updateProps(
         }
       }
     }
-    // in the case of functional component w/o props declaration, props and
-    // attrs point to the same object so it should already have been updated.
-    if (attrs !== rawCurrentProps) {
-      for (const key in attrs) {
-        if (
-          !rawProps ||
-          (!hasOwn(rawProps, key) &&
-            (!__COMPAT__ || !hasOwn(rawProps, key + 'Native')))
-        ) {
-          delete attrs[key]
-          hasAttrsChanged = true
-        }
-      }
-    }
   }
 
   // trigger updates for $attrs in case it's used in component slots
